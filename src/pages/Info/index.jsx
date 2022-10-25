@@ -1,9 +1,7 @@
-import { Header } from "../../components/Header"
-
 export function Info() {
     return (
         <div>
-            <section className="section">
+            <section className="section--pall">
                 <div className="container">
                     <h2 className="section__title">Info</h2>
                     <p>Developer name</p>
