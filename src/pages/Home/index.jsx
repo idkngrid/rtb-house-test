@@ -1,11 +1,22 @@
+import { useState, useEffect } from "react";
 import { Card } from "../../components/Card";
-import { Header } from "../../components/Header";
+import { Search } from "../../components/Search";
 import { Table } from "../../components/Table";
 
 export function Home() {
+    const [orders, setOrders] = useState([]);
+    const [searchInput, setSearchInput] = useState('');
+
+    useEffect(() => {
+        fetch("src/data/orders.json")
+            .then(response => response.json())
+            .then(data => setOrders(data)
+        )
+    }, [])
+
     return (
         <div>
-            <section className="section">
+            <section className="section--pall">
                 <div className="container">
                     <h2 className="section__title">Orders</h2>
                     <div className="grid">
@@ -24,12 +35,32 @@ export function Home() {
                     </div>
                 </div>
             </section>
-            
-            <section className="section">
+
+            {/* Search */}
+            <section className="section--py">
+                <div className="container">
+                    <Search onChange={(e) => setSearchInput(e.target.value)}/>
+                </div>
+            </section>
+
+            <section className="section--pall">
                 <div className="container">
                     <Table />
+                    
+                    {/* {orders.map(order => {
+                        return (
+                            <Table 
+                                orderId={order.orderId}
+                                product={order.product}
+                                price={order.price}
+                                seller={order.seller}
+                                country={order.country}
+                            />
+                        )
+                    })} */}
                 </div>
             </section>
         </div>
     )
 }
+
