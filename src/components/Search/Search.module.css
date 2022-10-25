@@ -1,0 +1,21 @@
+.search__wrapper {
+    position: relative;
+}
+
+.search__input {
+    padding: 16px 24px;
+    background-color: #EFF6FF;
+    border-radius: 4px;
+    outline: none;
+}
+
+.search__input:hover,
+search__input:focus {
+    border: 1px solid #3B82F6;
+}
+
+.search__icon {
+    position: absolute;
+    left: 230px;
+    top: 15px;
+}
