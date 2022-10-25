@@ -3,8 +3,6 @@ import { Header } from "../../components/Header"
 export function Info() {
     return (
         <div>
-            <Header />
-            
             <section className="section">
                 <div className="container">
                     <h2 className="section__title">Info</h2>

@@ -1,11 +1,10 @@
 import { Card } from "../../components/Card";
 import { Header } from "../../components/Header";
+import { Table } from "../../components/Table";
 
 export function Home() {
     return (
         <div>
-            <Header />
-            
             <section className="section">
                 <div className="container">
                     <h2 className="section__title">Orders</h2>
@@ -23,6 +22,12 @@ export function Home() {
                             totalCount="9999.99"
                         />
                     </div>
+                </div>
+            </section>
+            
+            <section className="section">
+                <div className="container">
+                    <Table />
                 </div>
             </section>
         </div>
