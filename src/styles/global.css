@@ -18,8 +18,12 @@
   margin-right: auto;
 }
 
-.section {
+.section--pall {
   padding: 4rem 1.5rem;
+}
+
+.section--py {
+  padding: 0rem 1.5rem;
 }
 
 .section__title {
