@@ -45,19 +45,7 @@ export function Home() {
 
             <section className="section--pall">
                 <div className="container">
-                    <Table />
-                    
-                    {/* {orders.map(order => {
-                        return (
-                            <Table 
-                                orderId={order.orderId}
-                                product={order.product}
-                                price={order.price}
-                                seller={order.seller}
-                                country={order.country}
-                            />
-                        )
-                    })} */}
+                    <Table data={orders} />  
                 </div>
             </section>
         </div>
