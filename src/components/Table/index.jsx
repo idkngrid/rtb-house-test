@@ -5,22 +5,23 @@ import { useState } from 'react';
 export function Table({ data }) {
 
     const [sort, setSort] = useState("asc");
+    const [setSortedOrders] = useState(data);
 
     function handleTableSort(column) {
-        if(sort === "asc") {
-            const sortedOrders = [...data].sort((a, b) => {
-                a[column].toString().toLowerCase() > b[column].toString().toLowerCase() ? 1 : -1
+        if (sort === "asc") {
+            const sorted = data.sort((a, b) => {
+                return (a[column] < b[column]) ? -1 : 1;
             });
-            console.log(sortedOrders);
             setSort("dsc");
-        } 
-        if(sort === "dsc") {
-            const sortedOrders = [...data].sort((a, b) => {
-                a[column].toString().toLowerCase() < b[column].toString().toLowerCase() ? 1 : -1
+            setSortedOrders(sorted);
+        }
+        if (sort === "dsc") {
+            const sorted = data.sort((a, b) => {
+                return (a[column] > b[column]) ? -1 : 1;
             });
-            console.log(sortedOrders)
             setSort("asc");
-        } 
+            setSortedOrders(sorted);
+        }
     }
 
     return (
