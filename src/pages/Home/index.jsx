@@ -3,16 +3,30 @@ import { Card } from "../../components/Card";
 import { Search } from "../../components/Search";
 import { Table } from "../../components/Table";
 
+import Orders from "../../data/orders.json";
+import Sellers from "../../data/sellers.json";
+
+
 export function Home() {
-    const [orders, setOrders] = useState([]);
+    const [orders, setOrders] = useState(Orders);
+    const [sellers, setSellers] = useState(Sellers);
     const [searchInput, setSearchInput] = useState('');
 
-    useEffect(() => {
-        fetch("src/data/orders.json")
-            .then(response => response.json())
-            .then(data => setOrders(data)
-        )
-    }, [])
+    function searchOrders(searchValue) {
+        setSearchInput(searchValue);
+        
+        if(searchInput !== '') {
+            const filteredData = orders.filter((order) => {
+                return Object.values(order).join('').toLowerCase().includes(searchInput.toLowerCase())
+            })
+                setOrders(filteredData);
+            }
+            else {
+                setOrders(orders);
+            }
+    }
+
+    console.log(orders);
 
     return (
         <div>
@@ -20,18 +34,13 @@ export function Home() {
                 <div className="container">
                     <h2 className="section__title">Orders</h2>
                     <div className="grid">
-                        <Card 
-                            seller="1"
-                            totalCount="9999.99"
-                        />
-                        <Card 
-                            seller="2"
-                            totalCount="9999.99"
-                        />
-                        <Card 
-                            seller="3"
-                            totalCount="9999.99"
-                        />
+                        {sellers.map((seller) => (
+                            <Card 
+                                key={seller.id}
+                                seller={seller.name}
+                                totalCount="9999.99"
+                            />
+                        ))}
                     </div>
                 </div>
             </section>
@@ -39,7 +48,7 @@ export function Home() {
             {/* Search */}
             <section className="section--py">
                 <div className="container">
-                    <Search onChange={(e) => setSearchInput(e.target.value)}/>
+                    <Search onChange={(e) => searchOrders(e.target.value)}/>
                 </div>
             </section>
 
