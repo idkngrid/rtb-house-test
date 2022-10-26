@@ -4,22 +4,22 @@ import { useState } from 'react';
 
 export function Table({ data }) {
 
-    const [sort, setSort] = useState("ASC");
+    const [sort, setSort] = useState("asc");
 
     function handleTableSort(column) {
-        if(sort === "ASC") {
+        if(sort === "asc") {
             const sortedOrders = [...data].sort((a, b) => {
                 a[column].toString().toLowerCase() > b[column].toString().toLowerCase() ? 1 : -1
             });
-            data = sortedOrders;
-            setSort("DSC");
+            console.log(sortedOrders);
+            setSort("dsc");
         } 
-        if(sort === "DSC") {
+        if(sort === "dsc") {
             const sortedOrders = [...data].sort((a, b) => {
                 a[column].toString().toLowerCase() < b[column].toString().toLowerCase() ? 1 : -1
             });
-            data = sortedOrders;
-            setSort("ASC");
+            console.log(sortedOrders)
+            setSort("asc");
         } 
     }
 
@@ -29,9 +29,9 @@ export function Table({ data }) {
                 <tr className={styles.tr}>
                     <th className={styles.td}>Order ID <span><CaretDown size={20} onClick={() => {handleTableSort("orderId")}}/></span></th>
                     <th className={styles.td}>Product <span><CaretDown size={20} onClick={() => {handleTableSort("product")}}/></span></th>
-                    <th className={styles.td}>Price</th>
-                    <th className={styles.td}>Seller</th>
-                    <th className={styles.td}>Country</th>
+                    <th className={styles.td}>Price <span><CaretDown size={20} onClick={() => {handleTableSort("price")}}/></span></th>
+                    <th className={styles.td}>Seller <span><CaretDown size={20} onClick={() => {handleTableSort("seller")}}/></span></th>
+                    <th className={styles.td}>Country <span><CaretDown size={20} onClick={() => {handleTableSort("country")}}/></span></th>
                 </tr>
             </thead>
             <tbody className={styles.tbody}>
@@ -39,9 +39,9 @@ export function Table({ data }) {
                 <tr className={styles.tr} key={orderId}>
                     <td className={styles.td}>{orderId}</td>
                     <td className={styles.td}>{product}</td>
+                    <td className={styles.td}>{price}</td>
                     <td className={styles.td}>{seller}</td>
                     <td className={styles.td}>{country}</td>
-                    <td className={styles.td}>{price}</td>
                 </tr>
                 ))}
             </tbody>
