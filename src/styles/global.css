@@ -12,6 +12,10 @@
   font-family: 'Inter', sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .container {
   max-width: 67.5rem;
   margin-left: auto;
