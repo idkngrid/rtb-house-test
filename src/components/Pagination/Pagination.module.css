@@ -1,0 +1,20 @@
+.pagination {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+    justify-content: end;
+    padding: 1rem;
+}
+
+.page__link {
+    text-decoration: none;
+    padding: .5rem;
+    border-radius: 4px;
+    color: #64748B;
+    
+}
+
+.page__link:focus {
+    background-color: #3B82F6;
+    color: #FFFFFF;
+}
