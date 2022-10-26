@@ -2,41 +2,52 @@ import { useState, useEffect } from "react";
 import { Card } from "../../components/Card";
 import { Search } from "../../components/Search";
 import { Table } from "../../components/Table";
+import { Pagination } from "../../components/Pagination";
 
 import Orders from "../../data/orders.json";
 import Sellers from "../../data/sellers.json";
 
 export function Home() {
-    const [orders, setOrders] = useState(Orders);
-    const [sellers, setSellers] = useState(Sellers);
+    const [filteredOrders, setFilteredOrders] = useState(Orders);
+    const [sellers] = useState(Sellers);
     const [totalCount, setTotalCount] = useState(0);
-    const [searchInput, setSearchInput] = useState('');
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const [ordersPerPage] = useState(10);
+
+    // get current orders
+    const indexLastOrder = currentPage * ordersPerPage;
+    const indexFirstOrder = indexLastOrder - ordersPerPage;
+    const currentOrders =  filteredOrders.slice(indexFirstOrder, indexLastOrder);
+
 
     useEffect(() => {
-        const ordersSellers = orders.filter(order => order.seller === sellers[0].id).map(value => value.price).reduce((acc, amount) => acc + amount);
+        const ordersSellers = filteredOrders.filter(order => order.seller === sellers[0].id).map(value => value.price).reduce((acc, amount) => acc + amount);
         setTotalCount(ordersSellers);
-    }, [orders])
-
+    }, [])
 
     function handleSearchOrders(searchValue) {
-        setSearchInput(searchValue);
-        
-        if(searchInput !== '') {
-            const filteredData = orders.filter((order) => {
-                return Object.values(order).join('').toLowerCase().includes(searchInput.toLowerCase())
+        if(searchValue) {
+            const filteredData = [...Orders].filter((order) => {
+                return Object.values(order).join('').toLowerCase().includes(searchValue.toLowerCase())
             })
-            setOrders(filteredData);
+            setFilteredOrders(filteredData);
         }
         else {
-            setOrders(orders);
+            setFilteredOrders(Orders);
         }
     }
 
-    return (
-        <div>
-            <section className="section--pall">
-                <div className="container">
-                    <h2 className="section__title">Orders</h2>
+    function handlePagination(pageNumber) {
+        setCurrentPage(pageNumber);
+    }
+
+return (
+    <div>
+        <section className="section--pall">
+            <div className="container">
+
+            <h2 className="section__title">Orders</h2>
                     <div className="grid">
                         {sellers.map((seller) => (
                             <Card 
@@ -57,10 +68,14 @@ export function Home() {
 
             <section className="section--pall">
                 <div className="container">
-                    <Table data={orders} />  
+                    <Table data={currentOrders} />  
+                    <Pagination 
+                        ordersPerPage={ordersPerPage}
+                        totalOrders={filteredOrders.length}
+                        onHandlePagination={handlePagination}
+                    />
                 </div>
             </section>
         </div>
     )
 }
-
