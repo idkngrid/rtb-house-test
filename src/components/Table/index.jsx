@@ -35,13 +35,13 @@ export function Table({ data }) {
                 </tr>
             </thead>
             <tbody className={styles.tbody}>
-                {data.map(({ orderId, product, seller, country, price }) => (
-                <tr className={styles.tr} key={orderId}>
-                    <td className={styles.td}>{orderId}</td>
-                    <td className={styles.td}>{product}</td>
-                    <td className={styles.td}>{price}</td>
-                    <td className={styles.td}>{seller}</td>
-                    <td className={styles.td}>{country}</td>
+                {data.map((order) => (
+                <tr className={styles.tr} key={order.orderId}>
+                    <td className={styles.td}>{order.orderId}</td>
+                    <td className={styles.td}>{order.product}</td>
+                    <td className={styles.td}>{order.price}</td>
+                    <td className={styles.td}>{order.seller}</td>
+                    <td className={styles.td}>{order.country}</td>
                 </tr>
                 ))}
             </tbody>
