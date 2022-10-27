@@ -6,6 +6,7 @@ import { Pagination } from "../../components/Pagination";
 
 import Orders from "../../data/orders.json";
 import Sellers from "../../data/sellers.json";
+import { SelectFilter } from "../../components/SelectFilter";
 
 export function Home() {
     const [filteredOrders, setFilteredOrders] = useState(Orders);
@@ -16,8 +17,9 @@ export function Home() {
     const [ordersPerPage] = useState(10);
 
     useEffect(() => {
-        const ordersSellers = filteredOrders.filter(order => order.seller === sellers[0].id).map(value => value.price).reduce((acc, amount) => acc + amount);
-        setTotalCount(ordersSellers);
+        
+            const ordersSellers = filteredOrders.filter(order => order.seller === sellers[0].id).map(value => value.price).reduce((acc, amount) => acc + amount);
+            setTotalCount(ordersSellers);
     }, [])
 
     // Setting variables for the pagination
@@ -32,8 +34,8 @@ export function Home() {
     // Search orders
     function handleSearchOrders(searchValue) {
         if(searchValue) {
-            const filteredData = [...currentOrders].filter((order) => {
-                return Object.values(order).join('').toLowerCase().includes(searchValue.toLowerCase())
+            const filteredData = [...Orders].filter((order) => {
+                return Object.values(order).join('').toLowerCase().includes(searchValue.toLowerCase());
             })
             setFilteredOrders(filteredData);
         }
@@ -61,8 +63,10 @@ return (
             </section>
 
             <section className="section--py">
-                <div className="container">
+                <div className="container grid">
                     <Search onChange={(e) => handleSearchOrders(e.target.value)}/>
+                    <SelectFilter />
+                    <SelectFilter />
                 </div>
             </section>
 
