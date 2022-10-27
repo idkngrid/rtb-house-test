@@ -3,7 +3,14 @@
     gap: 1rem;
     list-style: none;
     justify-content: end;
+    align-items: center;
     padding: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+    .pagination {
+        justify-content: center;
+    }
 }
 
 .page__link {
@@ -14,7 +21,12 @@
     
 }
 
-.page__link:focus {
+.page__link:focus,
+.page__link:active {
     background-color: #3B82F6;
     color: #FFFFFF;
+}
+
+.page__icon {
+    cursor: pointer;
 }
