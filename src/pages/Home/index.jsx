@@ -15,20 +15,24 @@ export function Home() {
     const [currentPage, setCurrentPage] = useState(1);
     const [ordersPerPage] = useState(10);
 
-    // get current orders
-    const indexLastOrder = currentPage * ordersPerPage;
-    const indexFirstOrder = indexLastOrder - ordersPerPage;
-    const currentOrders =  filteredOrders.slice(indexFirstOrder, indexLastOrder);
-
-
     useEffect(() => {
         const ordersSellers = filteredOrders.filter(order => order.seller === sellers[0].id).map(value => value.price).reduce((acc, amount) => acc + amount);
         setTotalCount(ordersSellers);
     }, [])
 
+    // Setting variables for the pagination
+    const indexLastOrder = currentPage * ordersPerPage;
+    const indexFirstOrder = indexLastOrder - ordersPerPage;
+    const currentOrders =  filteredOrders.slice(indexFirstOrder, indexLastOrder);
+
+    function handlePagination(pageNumber) {
+        setCurrentPage(pageNumber);
+    }
+
+    // Search orders
     function handleSearchOrders(searchValue) {
         if(searchValue) {
-            const filteredData = [...Orders].filter((order) => {
+            const filteredData = [...currentOrders].filter((order) => {
                 return Object.values(order).join('').toLowerCase().includes(searchValue.toLowerCase())
             })
             setFilteredOrders(filteredData);
@@ -36,10 +40,6 @@ export function Home() {
         else {
             setFilteredOrders(Orders);
         }
-    }
-
-    function handlePagination(pageNumber) {
-        setCurrentPage(pageNumber);
     }
 
 return (
