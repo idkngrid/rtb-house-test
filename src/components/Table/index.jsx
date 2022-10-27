@@ -16,19 +16,19 @@ export function Table({ data }) {
     const [sortedOrders, setSortedOrders] = useState(data);
 
     function handleTableSort(column) {
-        if (sort === "asc") {
+        if (sort === "desc") {
             const sorted = data.sort((a, b) => {
                 return (a[column] < b[column]) ? -1 : 1;
             });
+            setSort("asc");
             setSortedOrders(sorted);
-            setSort("dsc");
         }
-        if (sort === "dsc") {
+        if (sort === "asc") {
             const sorted = data.sort((a, b) => {
                 return (a[column] > b[column]) ? -1 : 1;
             });
+            setSort("desc");
             setSortedOrders(sorted);
-            setSort("asc");
         }
     }
 
