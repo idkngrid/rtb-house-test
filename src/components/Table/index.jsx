@@ -1,38 +1,55 @@
 import styles from './Table.module.css';
-import { CaretDown, CaretUp } from 'phosphor-react';
+import { Car, CaretDown, CaretUp } from 'phosphor-react';
 import { useState } from 'react';
 
 export function Table({ data }) {
 
+    const headers = [
+        { key: "orderId", label: "Order ID" },
+        { key: "product", label: "Product" },
+        { key: "price", label: "Price" },
+        { key: "seller", label: "Seller" },
+        { key: "country", label: "Country" },
+    ];
+
     const [sort, setSort] = useState("asc");
-    const [setSortedOrders] = useState(data);
+    const [sortedOrders, setSortedOrders] = useState(data);
 
     function handleTableSort(column) {
         if (sort === "asc") {
             const sorted = data.sort((a, b) => {
                 return (a[column] < b[column]) ? -1 : 1;
             });
-            setSort("dsc");
             setSortedOrders(sorted);
+            setSort("dsc");
         }
         if (sort === "dsc") {
             const sorted = data.sort((a, b) => {
                 return (a[column] > b[column]) ? -1 : 1;
             });
-            setSort("asc");
             setSortedOrders(sorted);
+            setSort("asc");
         }
     }
 
     return (
         <table className={styles.table}>
             <thead className={styles.thead}>
-                <tr className={styles.tr}>
-                    <th className={styles.td}>Order ID <span><CaretDown size={20} onClick={() => {handleTableSort("orderId")}}/></span></th>
-                    <th className={styles.td}>Product <span><CaretDown size={20} onClick={() => {handleTableSort("product")}}/></span></th>
-                    <th className={styles.td}>Price <span><CaretDown size={20} onClick={() => {handleTableSort("price")}}/></span></th>
-                    <th className={styles.td}>Seller <span><CaretDown size={20} onClick={() => {handleTableSort("seller")}}/></span></th>
-                    <th className={styles.td}>Country <span><CaretDown size={20} onClick={() => {handleTableSort("country")}}/></span></th>
+                <tr>
+                    {headers.map((col) => {
+                        return (
+                            <th 
+                                key={col.key}
+                            >
+                                {col.label}
+                                {sort === "asc" ? (
+                                    <CaretDown size={20} weight="fill" onClick={() => handleTableSort(col.key)} className={styles.col__icon} />
+                                ) : (
+                                    <CaretUp size={20} weight="fill" onClick={() => handleTableSort(col.key)} className={styles.col__icon} />
+                                )}
+                            </th>
+                        )
+                    })}
                 </tr>
             </thead>
             <tbody className={styles.tbody}>
