@@ -1,7 +1,7 @@
 export function Info() {
     return (
         <div>
-            <section className="section--pall">
+            <section className="section section--pall">
                 <div className="container">
                     <h2 className="section__title">Info</h2>
                     <span>Ingrid de Camargo Pereira</span>

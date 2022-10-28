@@ -17,7 +17,7 @@ export function SelectFilter({ filterValueSelected }) {
 
     return (
         <select name="" id="" className={styles.select} onChange={onHandleFilterSelect}>
-            <option value="all">All</option>
+            <option value="all">All countries</option>
             {countries.map(country => (
                 <option className={styles.option} value={country.country} key={country.id}>{country.country}</option>
             ))}

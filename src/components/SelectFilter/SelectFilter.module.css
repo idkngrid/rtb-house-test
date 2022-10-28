@@ -1,8 +1,11 @@
 .select {
-    width: 30%;
-    padding: 16px;
-    background-color: #EFF6FF;
-    border-radius: 4px;
+    padding: 12px 24px;
+    background: #FFFFFF;
+    border: 1px solid #E6E6E6;
+    border-radius: 8px;
     outline: none;
-    cursor: pointer;
+}
+
+.select:focus {
+    border: 1px solid #E6E6E6;
 }
