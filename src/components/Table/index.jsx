@@ -33,7 +33,7 @@ export function Table({ data }) {
     }
 
     return (
-        <table className={styles.table}>
+        <table className={styles.table} cellSpacing="10px">
             <thead className={styles.thead}>
                 <tr>
                     {headers.map((col) => {
@@ -55,11 +55,11 @@ export function Table({ data }) {
             <tbody className={styles.tbody}>
                 {data.map((order) => (
                 <tr className={styles.tr} key={order.orderId}>
-                    <td className={styles.td}>{order.orderId}</td>
-                    <td className={styles.td}>{order.product}</td>
-                    <td className={styles.td}>{order.price}</td>
-                    <td className={styles.td}>{order.seller}</td>
-                    <td className={styles.td}>{order.country}</td>
+                    <td>{order.orderId}</td>
+                    <td>{order.product}</td>
+                    <td>{order.price}</td>
+                    <td>{order.seller}</td>
+                    <td>{order.country}</td>
                 </tr>
                 ))}
             </tbody>
