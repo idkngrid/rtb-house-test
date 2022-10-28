@@ -11,6 +11,7 @@ import { SelectFilter } from "../../components/SelectFilter";
 export function Home() {
     const [filteredOrders, setFilteredOrders] = useState(Orders);
     const [filterSelectedValue, setFilterSelectedValue] = useState('all');
+
     const [totalCount, setTotalCount] = useState(0);
 
     const [currentPage, setCurrentPage] = useState(1);
@@ -30,6 +31,7 @@ export function Home() {
 
     useEffect(() => {
         const entries = Object.entries(ordersSellers);
+        console.log(entries)
         entries.map(entry => {
             if(entry[0] == 1) {
                 setTotalCount(entry[1]);
@@ -114,7 +116,12 @@ return (
 
             <section className="section--pall">
                 <div className="container">
-                    <Table data={filterSelected} />  
+                    {filterSelectedValue === "all" ? (
+                        <Table data={currentOrders} />  
+                    ) : (
+                        <Table data={filterSelected} />  
+                    )}
+
                     <Pagination 
                         ordersPerPage={ordersPerPage}
                         totalOrders={Orders.length}
