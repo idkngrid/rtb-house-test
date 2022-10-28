@@ -8,7 +8,7 @@ export function Search({onChange}) {
             <input 
                 className={styles.search__input} 
                 type="text" 
-                placeholder="Search..."
+                placeholder="Search"
                 onChange={onChange}
             />
             <span>

@@ -84,7 +84,7 @@ return (
             </div>
         </section>
 
-        <section className="section">
+        <section className="section section--px">
             <h2 className="section__title align--center">Product List</h2>
             <div className="container search__container">
                 <Search onChange={(e) => handleSearchOrders(e.target.value)}/>
@@ -96,7 +96,7 @@ return (
             </div>
         </section>
 
-        <section className="section section">
+        <section className="section section section--px">
             <div className="container">
                 {filterSelectedValue === "all" ? (
                     <Table data={currentOrders} />  
@@ -105,6 +105,7 @@ return (
                 )}
 
                 <Pagination 
+                    currentPage={currentPage}
                     ordersPerPage={ordersPerPage}
                     totalOrders={Orders.length}
                     onHandlePagination={handlePagination}

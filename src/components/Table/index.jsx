@@ -33,7 +33,7 @@ export function Table({ data }) {
     }
 
     return (
-        <table className={styles.table} cellSpacing="10px">
+        <table className={styles.table} cellSpacing="15px">
             <thead className={styles.thead}>
                 <tr>
                     {headers.map((col) => {
