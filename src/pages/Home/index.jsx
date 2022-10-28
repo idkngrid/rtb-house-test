@@ -12,43 +12,21 @@ export function Home() {
     const [filteredOrders, setFilteredOrders] = useState(Orders);
     const [filterSelectedValue, setFilterSelectedValue] = useState('all');
 
-    const [totalCount, setTotalCount] = useState(0);
-
     const [currentPage, setCurrentPage] = useState(1);
     const [ordersPerPage] = useState(10);
 
-    const ordersSellers = filteredOrders.reduce((total, order) => {
-        const { seller, price } = order;
-        if(seller) {
-            if(total[seller]) {
-                total[seller] += price;
-            } else {
-                total[seller] = price;
-            }
+    // Get total price of each seller
+    const ordersSellers = Sellers.map(seller => {
+        const orders = Orders.filter(order => order.seller === seller.id);
+        const totalPrice = orders.reduce((acc, order) => {
+            return acc + order.price;
+        }, 0);
+
+        return {
+            ...seller,
+            totalPrice
         }
-        return total;
-    }, {})
-
-    useEffect(() => {
-        const entries = Object.entries(ordersSellers);
-        console.log(entries)
-        entries.map(entry => {
-            if(entry[0] == 1) {
-                setTotalCount(entry[1]);
-            } else if(entry[0] == 2) {
-                setTotalCount(entry[1]);
-            } else {
-                setTotalCount(entry[1]);
-            }
-        });
-    }, [])
-
-        // const ordersSellers = 
-        //     filteredOrders.filter(order => order.seller === )
-        //     .map(value => value.price)
-        //     .reduce((acc, amount) => acc + amount);
-
-        // setTotalCount(ordersSellers);
+    })  
 
     // Setting variables for the pagination
     const indexLastOrder = currentPage * ordersPerPage;
@@ -72,6 +50,7 @@ export function Home() {
         }
     }
 
+    // Filter orders by country
     function onFilterSelected(selectedValue) {
         setFilterSelectedValue(selectedValue);
     }
@@ -90,45 +69,48 @@ export function Home() {
 
 return (
     <div>
-        <section className="section--pall">
+        <section className="section section--pall">
             <div className="container">
-
-            <h2 className="section__title">Orders</h2>
-                    <div className="grid">
-                        {Sellers.map((seller) => (
-                            <Card 
-                                key={seller.id}
-                                seller={seller.name}
-                                totalCount={totalCount}
-                            />
-                        ))}
-                    </div>
+                <h2 className="section__title align--center">Seller Report</h2>
+                <div className="grid">
+                    {ordersSellers.map(seller => (
+                        <Card 
+                            key={seller.id}
+                            seller={seller.name}
+                            totalCount={seller.totalPrice}
+                        />
+                    ))}
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <section className="section--py">
-                <div className="container grid">
-                    <Search onChange={(e) => handleSearchOrders(e.target.value)}/>
-                    
+        <section className="section">
+            <h2 className="section__title align--center">Product List</h2>
+            <div className="container search__container">
+                <Search onChange={(e) => handleSearchOrders(e.target.value)}/>
+                
+                <div className="select__container">
+                    <SelectFilter filterValueSelected={onFilterSelected} />
                     <SelectFilter filterValueSelected={onFilterSelected} />
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <section className="section--pall">
-                <div className="container">
-                    {filterSelectedValue === "all" ? (
-                        <Table data={currentOrders} />  
-                    ) : (
-                        <Table data={filterSelected} />  
-                    )}
+        <section className="section section">
+            <div className="container">
+                {filterSelectedValue === "all" ? (
+                    <Table data={currentOrders} />  
+                ) : (
+                    <Table data={filterSelected} />  
+                )}
 
-                    <Pagination 
-                        ordersPerPage={ordersPerPage}
-                        totalOrders={Orders.length}
-                        onHandlePagination={handlePagination}
-                    />
-                </div>
-            </section>
-        </div>
+                <Pagination 
+                    ordersPerPage={ordersPerPage}
+                    totalOrders={Orders.length}
+                    onHandlePagination={handlePagination}
+                />
+            </div>
+        </section>
+    </div>
     )
 }
