@@ -1,6 +1,5 @@
 import styles from './Search.module.css';
 import { MagnifyingGlass } from 'phosphor-react';
-import { useState } from 'react';
 
 export function Search({onChange}) {
 
