@@ -1,0 +1,30 @@
+ul {
+    list-style: none;
+}
+
+li {
+    margin-bottom: .5rem;
+}
+
+.info__container {
+    max-width: 40rem;
+}
+
+.info__project {
+    margin-bottom: 1rem;
+}
+
+.info__name {
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+}
+
+.info__tech {
+    margin-bottom: 1rem;
+}
+
+.info__social {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
