@@ -16,24 +16,8 @@ html {
   scroll-behavior: smooth;
 }
 
-.container {
-  max-width: 67.5rem;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.section--pall {
-  padding: 4rem 1.5rem;
-}
-
-.section--py {
-  padding: 0rem 1.5rem;
-}
-
-.section__title {
-  font-size: 2.25rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
+.align--center {
+  text-align: center;
 }
 
 .grid {
@@ -48,5 +32,54 @@ html {
     grid-auto-columns: 1fr;
     grid-auto-flow: column;
     grid-template-columns: inherit;
+  }
+}
+
+.container {
+  max-width: 67.5rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section {
+  background-color: #F9F9F9;
+}
+
+.section--pall {
+  padding: 5rem 1.5rem;
+}
+
+.section--py {
+  padding: 1.5rem 0rem;
+}
+
+.section--px {
+  padding: 0rem 1.5rem;
+}
+
+.section__title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.search__container {
+  display: block;
+}
+
+.select__container {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .search__container {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1.5rem;
+  }
+
+  .select__container {
+    display: flex;
+    gap: 2rem;
   }
 }
