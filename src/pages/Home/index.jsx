@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Card } from "../../components/Card";
 import { Search } from "../../components/Search";
 import { Table } from "../../components/Table";
@@ -55,7 +55,7 @@ export function Home() {
         setFilterSelectedValue(selectedValue);
     }
 
-    const filterSelected = Orders.filter((order) => {
+    const filterSelected = currentOrders.filter((order) => {
         if(filterSelectedValue === "ARG") {
             return order.country === "ARG";
         } else if(filterSelectedValue === "BRA") {
@@ -90,7 +90,6 @@ return (
                 <Search onChange={(e) => handleSearchOrders(e.target.value)}/>
                 
                 <div className="select__container">
-                    <SelectFilter filterValueSelected={onFilterSelected} />
                     <SelectFilter filterValueSelected={onFilterSelected} />
                 </div>
             </div>
