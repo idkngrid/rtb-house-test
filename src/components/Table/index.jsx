@@ -1,5 +1,5 @@
 import styles from './Table.module.css';
-import { Car, CaretDown, CaretUp } from 'phosphor-react';
+import { CaretDown, CaretUp } from 'phosphor-react';
 import { useState } from 'react';
 
 export function Table({ data }) {
@@ -13,6 +13,7 @@ export function Table({ data }) {
     ];
 
     const [sort, setSort] = useState("asc");
+    const [sortKey, setSortKey] = useState("orderId");
     const [sortedOrders, setSortedOrders] = useState(data);
 
     function handleTableSort(column) {
@@ -20,6 +21,7 @@ export function Table({ data }) {
             const sorted = data.sort((a, b) => {
                 return (a[column] < b[column]) ? -1 : 1;
             });
+            setSortKey(column);
             setSort("asc");
             setSortedOrders(sorted);
         }
@@ -27,6 +29,7 @@ export function Table({ data }) {
             const sorted = data.sort((a, b) => {
                 return (a[column] > b[column]) ? -1 : 1;
             });
+            setSortKey(column);
             setSort("desc");
             setSortedOrders(sorted);
         }
@@ -42,7 +45,7 @@ export function Table({ data }) {
                                 key={col.key}
                             >
                                 {col.label}
-                                {sort === "asc" ? (
+                                {sort === "asc"? (
                                     <CaretDown size={20} weight="fill" onClick={() => handleTableSort(col.key)} className={styles.col__icon} />
                                 ) : (
                                     <CaretUp size={20} weight="fill" onClick={() => handleTableSort(col.key)} className={styles.col__icon} />
