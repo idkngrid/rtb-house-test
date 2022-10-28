@@ -7,7 +7,7 @@ export function Header() {
         <header className={styles.header}>
             <div className="container">
                 <nav className={styles.nav}>
-                    <a href="#" className={styles.header__logo}><img src="./logo.svg" alt="" /></a>
+                    <a href="/" className={styles.header__logo}><img src="./logo.svg" alt="" /></a>
 
                     <ul className={styles.menu__list}>
                         <li><Link to="/">Orders</Link></li>

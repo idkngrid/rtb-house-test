@@ -8,10 +8,9 @@ li {
 
 .info__container {
     max-width: 40rem;
-}
-
-.info__project {
-    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
 
 .info__name {

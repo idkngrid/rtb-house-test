@@ -18,9 +18,10 @@ export function Info() {
                                 <li>Search</li>
                                 <li>Filter by country</li>
                             </ul>
+                        </div>
 
-                            <p> For this project, I tried using the least libraries as possible to really challenge myself on doing things from scratch.</p>
-                            <p className={styles.info__tech}>Technologies used:</p>
+                        <div>
+                            <h3 className={styles.info__tech}>Technologies used:</h3>
                             <ul>
                                 <li>React</li>
                                 <li>Node.js</li>
@@ -29,6 +30,7 @@ export function Info() {
                                 <li>Github</li>
                             </ul>
                         </div>
+                        
                         <ul className={styles.info__social}>
                             <li><a href="https://github.com/idkngrid/rtb-house-test" target="_blank"><img className={styles.info__icon} src="./icon-github.svg" alt="Github icon"/></a></li>
                             <li><a href="https://www.linkedin.com/in/ingrid-de-camargo-pereira-1b95b619b/" target="_blank"><img className={styles.info__icon} src="./icon-linkedin.svg" alt="Linkedin icon"/></a></li>

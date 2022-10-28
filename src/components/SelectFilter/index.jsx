@@ -3,7 +3,7 @@ import Sellers from '../../data/sellers.json';
 
 import styles from './SelectFilter.module.css';
 
-export function SelectFilter({ filterValueSelected }) {
+export function SelectFilter({ filterValueSelected, option }) {
 
     const countries = [
         { id: 1, country: "BRA" },

@@ -3,7 +3,6 @@
     gap: 1rem;
     list-style: none;
     justify-content: end;
-    align-items: center;
     padding: 1rem;
 }
 
@@ -15,16 +14,19 @@
 
 .page__link {
     text-decoration: none;
-    padding: .5rem;
+    padding: 8px 12px;
     border-radius: 4px;
     color: #64748B;
     
 }
 
 .active {
-    background-color: #3B82F6;
+    background-color: #B0B3B8;
     border-radius: 4px;
-    color: #FFFFFF;
+}
+
+.active a {
+    color: #FFFFFF; 
 }
 
 .page__icon {
