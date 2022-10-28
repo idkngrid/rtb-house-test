@@ -4,7 +4,7 @@ export function Info() {
             <section className="section--pall">
                 <div className="container">
                     <h2 className="section__title">Info</h2>
-                    <p>Ingrid de Camargo Pereira</p>
+                    <span>Ingrid de Camargo Pereira</span>
                     <p>For this project, I tried using the least libraries as possible to really challenge myself on doing things from scratch.</p>
                     <p>Technologies used:</p>
                     <ul>
