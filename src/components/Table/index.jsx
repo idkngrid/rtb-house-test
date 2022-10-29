@@ -13,7 +13,6 @@ export function Table({ data }) {
     ];
 
     const [sort, setSort] = useState("asc");
-    const [sortKey, setSortKey] = useState("orderId");
     const [sortedOrders, setSortedOrders] = useState(data);
 
     function handleTableSort(column) {
@@ -21,7 +20,6 @@ export function Table({ data }) {
             const sorted = data.sort((a, b) => {
                 return (a[column] < b[column]) ? -1 : 1;
             });
-            setSortKey(column);
             setSort("asc");
             setSortedOrders(sorted);
         }
@@ -29,43 +27,44 @@ export function Table({ data }) {
             const sorted = data.sort((a, b) => {
                 return (a[column] > b[column]) ? -1 : 1;
             });
-            setSortKey(column);
             setSort("desc");
             setSortedOrders(sorted);
         }
     }
 
     return (
-        <table className={styles.table} cellSpacing="15px">
-            <thead className={styles.thead}>
-                <tr>
-                    {headers.map((col) => {
-                        return (
-                            <th 
-                                key={col.key}
-                            >
-                                {col.label}
-                                {sort === "asc"? (
-                                    <CaretDown size={20} weight="fill" onClick={() => handleTableSort(col.key)} className={styles.col__icon} />
-                                ) : (
-                                    <CaretUp size={20} weight="fill" onClick={() => handleTableSort(col.key)} className={styles.col__icon} />
-                                )}
-                            </th>
-                        )
-                    })}
-                </tr>
-            </thead>
-            <tbody className={styles.tbody}>
-                {data.map((order) => (
-                <tr className={styles.tr} key={order.orderId}>
-                    <td>{order.orderId}</td>
-                    <td>{order.product}</td>
-                    <td>{order.price}</td>
-                    <td>{order.seller}</td>
-                    <td>{order.country}</td>
-                </tr>
-                ))}
-            </tbody>
-        </table>
+        <div className={styles.table}>
+            <table className={styles.inner} cellSpacing="15px">
+                <thead className={styles.header}>
+                    <tr className={styles.row}>
+                        {headers.map((col) => {
+                            return (
+                                <th className={styles.cell} 
+                                    key={col.key}
+                                >
+                                    {col.label}
+                                    {sort === "asc"? (
+                                        <CaretDown size={20} weight="fill" onClick={() => handleTableSort(col.key)} className={styles.col__icon} />
+                                    ) : (
+                                        <CaretUp size={20} weight="fill" onClick={() => handleTableSort(col.key)} className={styles.col__icon} />
+                                    )}
+                                </th>
+                            )
+                        })}
+                    </tr>
+                </thead>
+                <tbody className={styles.tbody}>
+                    {data.map((order) => (
+                    <tr className={styles.row} key={order.orderId}>
+                        <td className={styles.cell}>{order.orderId}</td>
+                        <td className={styles.cell}>{order.product}</td>
+                        <td className={styles.cell}>{order.price}</td>
+                        <td className={styles.cell}>{order.seller}</td>
+                        <td className={styles.cell}>{order.country}</td>
+                    </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
     )
 }
