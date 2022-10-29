@@ -13,7 +13,7 @@ export function Home() {
     const [filterSelectedValue, setFilterSelectedValue] = useState('all');
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [ordersPerPage] = useState(10);
+    const [ordersPerPage, setOrdersPerPage] = useState(10);
 
     // Get total price of each seller
     const ordersSellers = Sellers.map(seller => {
@@ -35,6 +35,14 @@ export function Home() {
 
     function handlePagination(pageNumber) {
         setCurrentPage(pageNumber);
+    }
+
+    function onHandlePrevBtn() {
+        if (currentPage !== 1) setCurrentPage(currentPage - 1);
+    }
+
+    function handleNextBtn() {
+        if (currentPage !== 3) setCurrentPage(currentPage + 1);
     }
 
     // Search orders
@@ -108,6 +116,8 @@ return (
                     ordersPerPage={ordersPerPage}
                     totalOrders={Orders.length}
                     onHandlePagination={handlePagination}
+                    onHandlePrevBtn={onHandlePrevBtn}
+                    onHandleNextBtn={handleNextBtn}
                 />
             </div>
         </section>

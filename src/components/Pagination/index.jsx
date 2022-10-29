@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 import styles from './Pagination.module.css';
 
-export function Pagination({ currentPage, ordersPerPage, totalOrders, onHandlePagination }) {
+export function Pagination({ currentPage, ordersPerPage, totalOrders, onHandlePagination, onHandlePrevBtn, onHandleNextBtn }) {
     const pageNumbers = [];
 
     for (let i = 1; i <= Math.ceil(totalOrders / ordersPerPage); i++) {
@@ -13,7 +13,7 @@ export function Pagination({ currentPage, ordersPerPage, totalOrders, onHandlePa
     return (
         <nav>       
             <ul className={styles.pagination}>
-                <CaretLeft size={20} className={styles.page__icon} />  
+                <CaretLeft size={20} className={styles.page__icon} onClick={onHandlePrevBtn} />  
                 {pageNumbers.map(number => (
                     <li key={number} className={currentPage == number ? styles.active : null}>
                         <a href="#" className={styles.page__link} onClick={() => onHandlePagination(number)}>
@@ -21,7 +21,7 @@ export function Pagination({ currentPage, ordersPerPage, totalOrders, onHandlePa
                         </a>
                     </li>
                 ))}
-                <CaretRight size={20} className={styles.page__icon} />  
+                <CaretRight size={20} className={styles.page__icon} onClick={onHandleNextBtn} />  
             </ul>
         </nav>
     )
