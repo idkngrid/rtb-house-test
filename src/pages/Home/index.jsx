@@ -13,7 +13,7 @@ export function Home() {
     const [filterSelectedValue, setFilterSelectedValue] = useState('all');
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [ordersPerPage, setOrdersPerPage] = useState(10);
+    const [ordersPerPage, setOrdersPerPage] = useState(7);
 
     // Get total price of each seller
     const ordersSellers = Sellers.map(seller => {
@@ -42,7 +42,7 @@ export function Home() {
     }
 
     function handleNextBtn() {
-        if (currentPage !== 3) setCurrentPage(currentPage + 1);
+        if (currentPage !== 4) setCurrentPage(currentPage + 1);
     }
 
     // Search orders
@@ -52,28 +52,27 @@ export function Home() {
                 return Object.values(order).join('').toLowerCase().includes(searchValue.toLowerCase());
             })
             setFilteredOrders(filteredData);
-            if (filteredData.length < ordersPerPage) setCurrentPage(1);
+            if (filteredData.length > ordersPerPage) setCurrentPage(1);
         }
         else {
             setFilteredOrders(Orders);
         }
     }
 
-    // Filter orders by country
+    // Filter orders by country or seller
     function onFilterSelected(selectedValue) {
         setFilterSelectedValue(selectedValue);
     }
 
     const filterSelected = currentOrders.filter((order) => {
-        if(filterSelectedValue === "ARG") {
-            return order.country === "ARG";
-        } else if(filterSelectedValue === "BRA") {
-            return order.country === "BRA";
-        } else if(filterSelectedValue === "MEX") {
-            return order.country === "MEX";
-        } else {
-            return order;
-        }
+        if(filterSelectedValue === "ARG") return order.country === "ARG";
+        if(filterSelectedValue === "BRA") return order.country === "BRA";
+        if(filterSelectedValue === "MEX") return order.country === "MEX";
+        
+        if(filterSelectedValue == 1) return order.seller == 1;
+        if(filterSelectedValue == 2) return order.seller == 2;
+        if(filterSelectedValue == 3) return order.seller == 3;
+        return order;
     })
 
 return (
