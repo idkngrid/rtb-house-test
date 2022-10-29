@@ -1,3 +1,5 @@
+import Sellers from '../../data/sellers.json';
+
 import styles from './SelectFilter.module.css';
 
 export function SelectFilter({ filterValueSelected }) {
@@ -13,12 +15,20 @@ export function SelectFilter({ filterValueSelected }) {
     }
 
     return (
-        <select name="" id="" className={styles.select} onChange={onHandleFilterSelect}>
-            
-            <option value="all">All countries</option>
-            {countries.map(country => (
-                <option className={styles.option} value={country.country} key={country.id}>{country.country}</option>
-            ))}
-        </select>
+        <div className={styles.select__container}>
+            <select name="" id="" className={styles.select} onChange={onHandleFilterSelect}>
+                <option value="all">All Sellers</option>
+                {Sellers.map(seller => (
+                    <option className={styles.option} value={seller.id} key={seller.id}>{seller.id}</option>
+                ))}
+            </select>   
+
+            <select name="" id="" className={styles.select} onChange={onHandleFilterSelect}>
+                <option value="all">All countries</option>
+                {countries.map(country => (
+                    <option className={styles.option} value={country.country} key={country.id}>{country.country}</option>
+                ))}
+            </select>
+        </div>
     )
 }

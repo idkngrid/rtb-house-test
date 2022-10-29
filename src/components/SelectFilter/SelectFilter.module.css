@@ -1,3 +1,8 @@
+.select__container {
+    display: flex;
+    gap: 3rem;
+}
+
 .select {
     padding: 12px 24px;
     background: #FFFFFF;
@@ -7,5 +12,16 @@
 }
 
 .select:focus {
-    border: 1px solid #E6E6E6;
+    border: 1px solid #B0B3B8;
+}
+
+@media screen and (max-width: 768px) {
+    .select__container {
+        display: flex;
+        gap: 0;
+    }
+
+    .select {
+        margin: 1rem;
+    }
 }
