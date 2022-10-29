@@ -1,5 +1,4 @@
 import { CaretRight, CaretLeft } from 'phosphor-react';
-import { useState } from 'react';
 
 import styles from './Pagination.module.css';
 
