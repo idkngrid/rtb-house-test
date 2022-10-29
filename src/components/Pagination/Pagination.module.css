@@ -27,6 +27,7 @@
 
 .active a {
     color: #FFFFFF; 
+    font-weight: 600;
 }
 
 .page__icon {
