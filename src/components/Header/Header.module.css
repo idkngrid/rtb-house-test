@@ -4,16 +4,10 @@
 }
 
 .nav {
-    display: block
-}
-
-@media screen (min-width: 768px){
-    .nav {
-        position: relative;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
 }
 
 .header__logo a {
@@ -32,4 +26,13 @@
     color: inherit;
     text-decoration: none;
     padding: .5rem;
+}
+
+@media screen and (min-width: 768px){
+    .nav {
+        position: relative;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
 }
