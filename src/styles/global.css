@@ -16,6 +16,10 @@ html {
   scroll-behavior: smooth;
 }
 
+input, select {
+  -webkit-appearance: none;
+}
+
 .align--center {
   text-align: center;
 }

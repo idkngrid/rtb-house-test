@@ -4,10 +4,16 @@
 }
 
 .nav {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: block
+}
+
+@media screen (min-width: 768px){
+    .nav {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 }
 
 .header__logo a {
