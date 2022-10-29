@@ -52,6 +52,7 @@ export function Home() {
                 return Object.values(order).join('').toLowerCase().includes(searchValue.toLowerCase());
             })
             setFilteredOrders(filteredData);
+            if (filteredData.length < ordersPerPage) setCurrentPage(1);
         }
         else {
             setFilteredOrders(Orders);
