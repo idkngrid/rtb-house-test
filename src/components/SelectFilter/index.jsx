@@ -1,9 +1,6 @@
-import Orders from '../../data/orders.json';
-import Sellers from '../../data/sellers.json';
-
 import styles from './SelectFilter.module.css';
 
-export function SelectFilter({ filterValueSelected, option }) {
+export function SelectFilter({ filterValueSelected }) {
 
     const countries = [
         { id: 1, country: "BRA" },
@@ -17,6 +14,7 @@ export function SelectFilter({ filterValueSelected, option }) {
 
     return (
         <select name="" id="" className={styles.select} onChange={onHandleFilterSelect}>
+            
             <option value="all">All countries</option>
             {countries.map(country => (
                 <option className={styles.option} value={country.country} key={country.id}>{country.country}</option>
