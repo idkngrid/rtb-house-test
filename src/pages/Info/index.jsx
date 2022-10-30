@@ -16,6 +16,7 @@ export function Info() {
                                 <li>Pagination</li>
                                 <li>Sorting</li>
                                 <li>Search</li>
+                                <li>Filter by Seller</li>
                                 <li>Filter by country</li>
                             </ul>
                         </div>

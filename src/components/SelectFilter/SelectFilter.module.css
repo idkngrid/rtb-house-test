@@ -9,6 +9,7 @@
     border: 1px solid #E6E6E6;
     border-radius: 8px;
     outline: none;
+    cursor: pointer;
 }
 
 .select:focus {
@@ -17,7 +18,7 @@
 
 @media screen and (max-width: 768px) {
     .select__container {
-        display: flex;
+        justify-content: end;
         gap: 0;
     }
 

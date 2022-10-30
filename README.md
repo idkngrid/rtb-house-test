@@ -7,6 +7,8 @@
 
 ✔ Seach
 
+✔ Filter by Seller
+
 ✔ Filter by country
 
 ## Technologies 

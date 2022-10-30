@@ -20,6 +20,10 @@ input, select {
   -webkit-appearance: none;
 }
 
+button {
+  background: none;
+}
+
 .align--center {
   text-align: center;
 }
@@ -51,10 +55,6 @@ input, select {
 
 .section--pall {
   padding: 5rem 1.5rem;
-}
-
-.section--py {
-  padding: 1.5rem 0rem;
 }
 
 .section--px {

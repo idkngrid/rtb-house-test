@@ -10,16 +10,16 @@ li {
     max-width: 40rem;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.5rem;
 }
 
 .info__name {
     font-size: 1.125rem;
-    margin-bottom: 1rem;
+    margin-bottom: .8rem;
 }
 
 .info__tech {
-    margin-bottom: 1rem;
+    margin-bottom: .8rem;
 }
 
 .info__social {
