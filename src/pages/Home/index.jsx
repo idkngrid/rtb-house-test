@@ -1,11 +1,13 @@
 import { useState } from "react";
+
+import Orders from "../../data/orders.json";
+import Sellers from "../../data/sellers.json";
+
+
 import { Card } from "../../components/Card";
 import { Search } from "../../components/Search";
 import { Table } from "../../components/Table";
 import { Pagination } from "../../components/Pagination";
-
-import Orders from "../../data/orders.json";
-import Sellers from "../../data/sellers.json";
 import { SelectFilter } from "../../components/SelectFilter";
 
 export function Home() {
@@ -42,7 +44,7 @@ export function Home() {
     }
 
     function handleNextBtn() {
-        if (currentPage !== 4) setCurrentPage(currentPage + 1);
+        if (currentPage !== Math.ceil(Orders.length / ordersPerPage)) setCurrentPage(currentPage + 1);
     }
 
     // Search orders
@@ -65,14 +67,7 @@ export function Home() {
     }
 
     const filterSelected = currentOrders.filter((order) => {
-        if(filterSelectedValue === "ARG") return order.country === "ARG";
-        if(filterSelectedValue === "BRA") return order.country === "BRA";
-        if(filterSelectedValue === "MEX") return order.country === "MEX";
-        
-        if(filterSelectedValue == 1) return order.seller == 1;
-        if(filterSelectedValue == 2) return order.seller == 2;
-        if(filterSelectedValue == 3) return order.seller == 3;
-        return order;
+        return order.seller == filterSelectedValue || order.country === filterSelectedValue;
     })
 
 return (
