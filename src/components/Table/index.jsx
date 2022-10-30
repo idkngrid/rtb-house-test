@@ -12,6 +12,7 @@ export function Table({ data }) {
         { key: "country", label: "Country" },
     ];
 
+    const [sortKey, setSortKey] = useState("orderId");
     const [sort, setSort] = useState("asc");
     const [sortedOrders, setSortedOrders] = useState(data);
 
@@ -20,6 +21,7 @@ export function Table({ data }) {
             const sorted = data.sort((a, b) => {
                 return (a[column] < b[column]) ? -1 : 1;
             });
+            setSortKey(column);
             setSort("asc");
             setSortedOrders(sorted);
         }
@@ -27,6 +29,7 @@ export function Table({ data }) {
             const sorted = data.sort((a, b) => {
                 return (a[column] > b[column]) ? -1 : 1;
             });
+            setSortKey(column);
             setSort("desc");
             setSortedOrders(sorted);
         }
@@ -43,11 +46,13 @@ export function Table({ data }) {
                                     key={col.key}
                                 >
                                     {col.label}
-                                    {sort === "asc"? (
-                                        <CaretDown size={20} weight="fill" onClick={() => handleTableSort(col.key)} className={styles.col__icon} />
-                                    ) : (
-                                        <CaretUp size={20} weight="fill" onClick={() => handleTableSort(col.key)} className={styles.col__icon} />
-                                    )}
+                                    {sortKey === col.key ? (
+                                        sort === 'asc' ? (
+                                            <CaretDown size={20} weight="fill" onClick={() => handleTableSort(col.key)} className={styles.col__icon} />
+                                        ) : (
+                                            <CaretUp size={20} weight="fill" onClick={() => handleTableSort(col.key)} className={styles.col__icon} />
+                                        )
+                                    ) : <CaretDown size={20} weight="fill" onClick={() => handleTableSort(col.key)} className={styles.col__icon} />}
                                 </th>
                             )
                         })}
