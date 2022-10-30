@@ -1,5 +1,7 @@
 # RTB House Test 
 
+For this project, I developed a program that fetches data from a json file and shows it in a table.
+
 ## Features
 ✔ Table Pagination
 
