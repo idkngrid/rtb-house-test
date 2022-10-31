@@ -1,6 +1,7 @@
 .select__field {
     position: relative;
     flex: 1;
+    min-width: 200px;
 }
 
 .select {
@@ -21,7 +22,9 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    right: 0;
+    right: 15px;
+    cursor: pointer;
+    pointer-events: none;
 }
 
 @media screen and (max-width: 768px) {
