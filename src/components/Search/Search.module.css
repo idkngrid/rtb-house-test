@@ -1,9 +1,11 @@
-.search__wrapper {
+.search__field {
     position: relative;
+    flex: 1;
 }
 
 .search__input {
     padding: 12px 24px;
+    padding-right: 32px;
     background: #FFFFFF;
     border: 1px solid #E6E6E6;
     border-radius: 8px;
@@ -17,6 +19,7 @@
 
 .search__icon {
     position: absolute;
-    right: 20px;
-    top: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 15px;
 }

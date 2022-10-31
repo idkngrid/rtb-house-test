@@ -4,16 +4,14 @@ import { MagnifyingGlass } from 'phosphor-react';
 export function Search({onChange}) {
 
     return (
-        <div className={styles.search__wrapper}>
+        <div className={styles.search__field}>
             <input 
                 className={styles.search__input} 
                 type="text" 
                 placeholder="Search"
                 onChange={onChange}
             />
-            <span>
-                <MagnifyingGlass size={20} weight="light" className={styles.search__icon} />
-            </span>
+            <MagnifyingGlass size={20} weight="light" className={styles.search__icon} />
         </div>
     )
 }

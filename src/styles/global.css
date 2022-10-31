@@ -14,6 +14,13 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: #F9F9F9;
+}
+
+.root {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 }
 
 input, select {
@@ -49,10 +56,6 @@ button {
   margin-right: auto;
 }
 
-.section {
-  background-color: #F9F9F9;
-}
-
 .section--pall {
   padding: 5rem 1.5rem;
 }
@@ -69,12 +72,13 @@ button {
 
 .search__container {
   display: block;
+  gap: 2rem;
 }
 
 .select__container {
   display: flex;
   justify-content: space-between;
-  gap: 2rem;
+  gap: 1rem;
 }
 
 @media (min-width: 768px) {
