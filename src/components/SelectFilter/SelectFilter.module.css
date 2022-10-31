@@ -33,7 +33,11 @@
         gap: 0;
     }
 
+    .select__field {
+        min-width: auto;
+    }
+
     .select {
-        margin: 1rem;
+        margin: 1rem 0;
     }
 }
